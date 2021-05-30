@@ -1,11 +1,11 @@
-def select_dataframe_v0(target_df, selected_df, key = 'SOURCE_ID'):
+def select_dataframe(target_df, selected_df, key = 'SOURCE_ID'):
     result_df = target_df
     return result_df
     
 # ----------------------------------------------------------------
 # プログラムは段階的に作って段階的にチェックするの巻き
 # ----------------------------------------------------------------
-# この select_dataframe_v0 はなにもしない。たんに target_df を
+# この select_dataframe はなにもしない。たんに target_df を
 # そのまま返しているだけ。コピーすらしていない
 # __main__ のチェックになる。
 # ----------------------------------------------------------------
@@ -21,6 +21,6 @@ if __name__ == '__main__':
     target_df = pd.read_csv(target_file)
     selected_df = pd.read_csv(selected_file)
 
-    result_df = select_dataframe_v0(target_df, selected_df)
+    result_df = select_dataframe(target_df, selected_df)
 
     result_df.to_csv(result_file)
