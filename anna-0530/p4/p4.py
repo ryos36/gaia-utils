@@ -1,8 +1,14 @@
-def select_dataframe(target_df, selected_df, key = 'source_id'):
+def select_dataframe(target_df, selected_df, key = 'source_id', debug = False):
     flag='anna_flag'
     sort_df = target_df.sort_values(key)
     sort_df[flag] = 0
-    return sort_df
+    for i,row in selected_df.iterrows():
+        if debug:
+            print(row)
+            print('=========')
+        print(sort_df.query(f'{key} == {row[key]}'))
+    result_df = sort_df
+    return result_df
     
 # ----------------------------------------------------------------
 # プログラムは段階的に作って段階的にチェックするの巻き
@@ -10,6 +16,9 @@ def select_dataframe(target_df, selected_df, key = 'source_id'):
 # この select_dataframe は単に target_df を
 # key でソートして、anna_flag を追加した。
 # 余分な anna_flag が入っている。初期値はゼロ。
+# そして、selected_df から target_df のデータを探して表示する
+# 表示だけよ
+# 表示は debug モードのみとする。
 # ----------------------------------------------------------------
 
 import pandas as pd
