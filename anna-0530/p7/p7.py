@@ -46,7 +46,7 @@ import sys
 
 if __name__ == '__main__':
     target_file = '../data/target.csv'
-    selected_file = '../data/selected.csv'
+    selected_file = '../data/selected2.csv'
     result_file = 'result.csv'
 
     target_df = pd.read_csv(target_file)
