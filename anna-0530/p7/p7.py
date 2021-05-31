@@ -16,6 +16,7 @@ def select_dataframe(target_df, selected_df, key = 'source_id', debug = False):
         if not hit.empty:
             if debug:
                 print(hit)
+            #２回検索していて効率が悪い
             sort_df.loc[sort_df[key] == row[key], flag] = 1
             count += 1
         else:
