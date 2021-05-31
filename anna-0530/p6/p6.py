@@ -9,12 +9,12 @@ def select_dataframe(target_df, selected_df, key = 'source_id', debug = False):
             print('=========')
         query_str =f'{key} == {row[key]}'
         print(query_str)
-        hit = sort_df.query(f'{key} == {row[key]}')
+        hit = sort_df.loc[sort_df[key] == row[key], flag]
         print(hit, hit.empty)
         if not hit.empty:
             if debug:
                 print(hit)
-            sort_df[flag] = 1
+            sort_df.loc[sort_df[key] == row[key], flag] = 1
             count += 1
         else:
             print('Not Found!! ', key, row[key])
