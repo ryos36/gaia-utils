@@ -4,18 +4,9 @@ def select_dataframe(target_df, selected_df, key = 'source_id', debug = False):
     sort_df[flag] = 0
     count = 0
     for i,row in selected_df.iterrows():
-        if debug:
-            print(row)
-            print('=========')
         query_str =f'{key} == {row[key]}'
-        if debug:
-            print(query_str)
-        hit = sort_df.loc[sort_df[key] == row[key], flag]
-        if debug:
-            print(hit, hit.empty)
+        hit = sort_df.loc[sort_df[key] == row[key]]
         if not hit.empty:
-            if debug:
-                print(hit)
             sort_df.loc[hit.index, flag] = 1
             count += 1
         else:
@@ -37,7 +28,7 @@ def select_dataframe(target_df, selected_df, key = 'source_id', debug = False):
 # データをしぼった。
 # だだし、anna_flag はのこったまま
 # さらに二回検索していたのを効率化した。
-# 表示は debug モードのみとする。
+# debug の print を削除
 # ----------------------------------------------------------------
 
 import pandas as pd
